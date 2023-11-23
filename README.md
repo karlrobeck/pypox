@@ -70,8 +70,6 @@ To use Pypox, follow these steps:
        uvicorn.run(fastapi_app, host="0.0.0.0", port=8000)
    ```
 
-Certainly! Below is an expanded explanation of the class structure of the `Pypox` module:
-
 ### `Pypox` Class Structure
 
 #### `__init__(self, directory: str)`
