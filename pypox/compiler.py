@@ -242,7 +242,7 @@ class Pypox:
             if self.main_api and root == self.directory:
                 for endpoint, endpoint_config in zip(endpoints, configs):
                     self.main_api.add_api_route(
-                        path=root.replace(self.directory, "") + "/",
+                        path=root.replace(self.directory, "").replace("\\", "/") + "/",
                         name=f"{endpoint_config['methods'][0]}_Endpoint",
                         endpoint=endpoint,
                         **endpoint_config,
@@ -252,7 +252,7 @@ class Pypox:
                 router: APIRouter = APIRouter(**config)
                 for endpoint, endpoint_config in zip(endpoints, configs):
                     router.add_api_route(
-                        path=root.replace(self.directory, "") + "/",
+                        path=root.replace(self.directory, "").replace("\\", "/") + "/",
                         name=f"{endpoint_config['methods'][0]}_Endpoint",
                         endpoint=endpoint,
                         **endpoint_config,

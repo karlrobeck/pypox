@@ -7,6 +7,9 @@ name = "pypi"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 twine = "*"
+pypox = {path = "."}
+mkdocs = "*"
+mkdocs-material = "*"
 
 [dev-packages]
 
