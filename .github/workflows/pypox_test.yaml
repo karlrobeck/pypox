@@ -5,7 +5,9 @@ name: Pypox Testing Workflow
 
 on:
   push:
-    branches: ["development"]
+    branches:
+      - development
+      - master
 
 permissions:
   contents: read
@@ -16,7 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.10
+      - name: Set up Python 3.11
         uses: actions/setup-python@v3
         with:
           python-version: "3.11.6"
