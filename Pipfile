@@ -10,6 +10,12 @@ twine = "*"
 pypox = {path = "."}
 mkdocs = "*"
 mkdocs-material = "*"
+sqlmodel = "*"
+aiosqlite = "*"
+faker = "*"
+httpx = "*"
+pytest = "*"
+pytest-asyncio = "*"
 
 [dev-packages]
 

@@ -1,1 +1,0 @@
-tags: list[str] = ["shops"]

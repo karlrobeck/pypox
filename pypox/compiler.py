@@ -18,6 +18,10 @@ FILE_CONVENTIONS: List[str] = [
     "post.py",
     "put.py",
     "delete.py",
+    "patch.py",
+    "options.py",
+    "head.py",
+    "license.md",
 ]
 
 FASTAPI_PARAMETERS: List[str] = [
@@ -126,20 +130,24 @@ class Pypox:
         Returns:
             Pypox: The current instance of Pypox.
         """
-        for root, dirs, files in os.walk(self.directory):
+        for root, dirs, files in os.walk(f"{self.directory}"):
             folder_modules: List[ModuleType] = []
             for file in files:
                 if file not in FILE_CONVENTIONS:
                     continue
-                module_name: str = os.path.splitext(file)[0]
-                module_path: str = os.path.join(root, file)
-                spec: ModuleType = importlib.util.spec_from_file_location(module_name, module_path)  # type: ignore
-                module: ModuleType = importlib.util.module_from_spec(spec)  # type: ignore
-                spec.loader.exec_module(module)  # type: ignore
-                folder_modules.append(module)
-                self.python_modules[
-                    root.replace("[", "{").replace("]", "}")
-                ] = folder_modules
+                if ".py" in file:
+                    module_name: str = os.path.splitext(file)[0]
+                    module_path: str = os.path.join(root, file)
+                    spec: ModuleType = importlib.util.spec_from_file_location(module_name, module_path)  # type: ignore
+                    module: ModuleType = importlib.util.module_from_spec(spec)  # type: ignore
+                    spec.loader.exec_module(module)  # type: ignore
+                    folder_modules.append(module)
+
+                    self.python_modules[
+                        root.replace("[", "{")
+                        .replace("]", "}")
+                        .replace("\\routes\\", "/")
+                    ] = folder_modules
         return self
 
     def __create_lifespan(self, modules: List[ModuleType]) -> Callable | None:
@@ -208,8 +216,12 @@ class Pypox:
         endpoints: list[Callable] = []
         configs: list[dict[str, Any]] = []
         for module in modules:
-            if module.__name__.upper() not in API_HTTP_VERBS:
+            if (
+                module.__name__.upper() not in API_HTTP_VERBS
+                and module.__name__ != "socket"
+            ):
                 continue
+
             assert hasattr(module, "endpoint"), "endpoint not found in module"
             endpoints.append(getattr(module, "endpoint"))
             api_config: dict[str, Any] = {
@@ -241,6 +253,18 @@ class Pypox:
 
             if self.main_api and root == self.directory:
                 for endpoint, endpoint_config in zip(endpoints, configs):
+                    if endpoint_config["methods"][0] == "SOCKET":
+                        self.main_api.add_api_websocket_route(
+                            path=root.replace(self.directory, "").replace("\\", "/")
+                            + "/",
+                            endpoint=endpoint,
+                            **{
+                                key: val
+                                for key, val in endpoint_config.items()
+                                if key != "methods"
+                            },
+                        )
+                        continue
                     self.main_api.add_api_route(
                         path=root.replace(self.directory, "").replace("\\", "/") + "/",
                         name=f"{endpoint_config['methods'][0]}_Endpoint",
@@ -251,6 +275,18 @@ class Pypox:
                 config: dict[str, Any] = self.__create_config(modules, "APIRouter")
                 router: APIRouter = APIRouter(**config)
                 for endpoint, endpoint_config in zip(endpoints, configs):
+                    if endpoint_config["methods"][0] == "SOCKET":
+                        self.main_api.add_api_websocket_route(
+                            path=root.replace(self.directory, "").replace("\\", "/")
+                            + "/",
+                            endpoint=endpoint,
+                            **{
+                                key: val
+                                for key, val in endpoint_config.items()
+                                if key != "methods"
+                            },
+                        )
+                        continue
                     router.add_api_route(
                         path=root.replace(self.directory, "").replace("\\", "/") + "/",
                         name=f"{endpoint_config['methods'][0]}_Endpoint",
