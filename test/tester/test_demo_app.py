@@ -28,7 +28,10 @@ def test_database():
 # test register route
 @pytest.mark.asyncio
 async def test_register():
-    async with AsyncClient(app=app, base_url="http://localhost:8000/") as ac:
+    async with AsyncClient(
+        app=app,
+        base_url="http://localhost:8000/",
+    ) as ac:
         fake_user_gen = faker.Faker()
         for _ in range(SIZE):
             fake_user = fake_user_gen.simple_profile()
