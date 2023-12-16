@@ -7,7 +7,6 @@ name = "pypi"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 twine = "*"
-pypox = "*"
 mkdocs = "*"
 mkdocs-material = "*"
 sqlmodel = "*"

@@ -2,7 +2,7 @@ import os
 import random
 from fastapi.testclient import TestClient
 from httpx import AsyncClient
-from ..app.main import app
+from test.app.main import app
 import pytest
 import faker
 
