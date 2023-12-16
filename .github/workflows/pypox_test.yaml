@@ -27,5 +27,7 @@ jobs:
         run: pip install pipenv
       - name: Install pipenv dependencies
         run: pipenv install
+      - name: Install Pypox
+        run: pipenv install pypox
       - name: Run pytest
         run: pipenv run pytest -s
