@@ -28,7 +28,7 @@ def test_database():
 # test register route
 @pytest.mark.asyncio
 async def test_register():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
         fake_user_gen = faker.Faker()
         for _ in range(SIZE):
             fake_user = fake_user_gen.simple_profile()
@@ -50,7 +50,7 @@ async def test_register():
 
 @pytest.mark.asyncio
 async def test_login():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
         for key in test_user:
             response = await ac.post(
                 "/auth/login/",
@@ -65,7 +65,7 @@ async def test_login():
 
 @pytest.mark.asyncio
 async def test_postTodo():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
         fake_user_gen = faker.Faker()
         for key in test_user:
             response = await ac.post(
@@ -81,7 +81,7 @@ async def test_postTodo():
 
 @pytest.mark.asyncio
 async def test_getTodo():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
         for key in test_user:
             response = await ac.get(
                 f"/todo/?user_id={test_user[key]['id']}",
@@ -92,7 +92,7 @@ async def test_getTodo():
 
 @pytest.mark.asyncio
 async def test_updateTodo():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
         for key in test_user:
             for todo in test_user[key]["todo"]:
                 response = await ac.put(
@@ -108,7 +108,7 @@ async def test_updateTodo():
 
 @pytest.mark.asyncio
 async def test_deleteTodo():
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
         for key in test_user:
             for todo in test_user[key]["todo"]:
                 response = await ac.delete(
