@@ -115,3 +115,13 @@ async def test_deleteTodo():
                     f"/todo/{todo.get('id')}/?user_id={test_user[key]['id']}",
                 )
                 assert response.status_code == 200
+
+
+def test_clean():
+    """
+    clean database
+    """
+    if os.path.exists(f"{os.getcwd()}/test/database.db"):
+        os.remove(f"{os.getcwd()}/test/database.db")
+        print("old database removed")
+    assert not os.path.exists(f"{os.getcwd()}/test/database.db")
