@@ -28,7 +28,7 @@ def test_database():
 # test register route
 @pytest.mark.asyncio
 async def test_register():
-    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000/") as ac:
         fake_user_gen = faker.Faker()
         for _ in range(SIZE):
             fake_user = fake_user_gen.simple_profile()
@@ -42,7 +42,7 @@ async def test_register():
 
         for key in test_user:
             response = await ac.post(
-                "/auth/register",
+                "/auth/register/",
                 json=test_user[key],
             )
             assert response.status_code == 200 or response.status_code == 409
@@ -50,10 +50,10 @@ async def test_register():
 
 @pytest.mark.asyncio
 async def test_login():
-    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000/") as ac:
         for key in test_user:
             response = await ac.post(
-                "/auth/login",
+                "/auth/login/",
                 json={
                     "username": test_user[key]["username"],
                     "password": test_user[key]["password"],
@@ -65,11 +65,11 @@ async def test_login():
 
 @pytest.mark.asyncio
 async def test_postTodo():
-    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000/") as ac:
         fake_user_gen = faker.Faker()
         for key in test_user:
             response = await ac.post(
-                f"/todo?user_id={test_user[key]['id']}",
+                f"/todo/?user_id={test_user[key]['id']}",
                 json={
                     "title": fake_user_gen.text(max_nb_chars=20),
                     "description": fake_user_gen.paragraph(nb_sentences=3),
@@ -81,10 +81,10 @@ async def test_postTodo():
 
 @pytest.mark.asyncio
 async def test_getTodo():
-    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000/") as ac:
         for key in test_user:
             response = await ac.get(
-                f"/todo?user_id={test_user[key]['id']}",
+                f"/todo/?user_id={test_user[key]['id']}",
             )
             test_user[key]["todo"] = response.json()
             assert response.status_code == 200
@@ -92,11 +92,11 @@ async def test_getTodo():
 
 @pytest.mark.asyncio
 async def test_updateTodo():
-    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000/") as ac:
         for key in test_user:
             for todo in test_user[key]["todo"]:
                 response = await ac.put(
-                    f"/todo/{todo.get('id')}?user_id={test_user[key]['id']}",
+                    f"/todo/{todo.get('id')}/?user_id={test_user[key]['id']}",
                     json={
                         "title": todo.get("title"),
                         "description": todo.get("description"),
@@ -108,11 +108,11 @@ async def test_updateTodo():
 
 @pytest.mark.asyncio
 async def test_deleteTodo():
-    async with AsyncClient(app=app, base_url="http://localhost:8000") as ac:
+    async with AsyncClient(app=app, base_url="http://localhost:8000/") as ac:
         for key in test_user:
             for todo in test_user[key]["todo"]:
                 response = await ac.delete(
-                    f"/todo/{todo.get('id')}?user_id={test_user[key]['id']}",
+                    f"/todo/{todo.get('id')}/?user_id={test_user[key]['id']}",
                 )
                 assert response.status_code == 200
 
