@@ -10,7 +10,9 @@ on:
       - master
 
 permissions:
-  contents: read
+  contents:
+    - read
+    - write
 
 jobs:
   build:
@@ -29,4 +31,4 @@ jobs:
       - name: run pytest
         run: |
           pipenv install --dev
-          pipenv run pytest
+          pipenv run pytest -s
