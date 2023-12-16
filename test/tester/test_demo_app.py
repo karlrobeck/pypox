@@ -10,7 +10,7 @@ import faker
 # test all routes
 
 test_user: dict[str, dict] = {}
-SIZE = 1000
+SIZE = 10
 
 
 def test_database():

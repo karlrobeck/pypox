@@ -5,10 +5,13 @@ name: Pypox Testing Workflow
 
 on:
   push:
-    branches: ["development"]
+    branches:
+      - development
 
 permissions:
-  contents: read
+  contents:
+    - read
+    - write
 
 jobs:
   build:
@@ -25,4 +28,4 @@ jobs:
       - name: Install pipenv
         run: pip install pipenv
       - name: run pytest
-        run: pipenv run pytest
+        run: pipenv run pytest -s
