@@ -15,6 +15,7 @@ faker = "*"
 httpx = "*"
 pytest = "*"
 pytest-asyncio = "*"
+pypox = "*"
 
 [dev-packages]
 
