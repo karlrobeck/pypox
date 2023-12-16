@@ -9,7 +9,7 @@ on:
       - development
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
