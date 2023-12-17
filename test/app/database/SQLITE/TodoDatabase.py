@@ -1,8 +1,5 @@
-import asyncio
+from sqlmodel import SQLModel, Field
 from typing import Optional
-from sqlmodel import Field, SQLModel
-from uuid import uuid1
-from sqlalchemy.ext.asyncio import create_async_engine
 
 
 class Todo(SQLModel, table=True):
@@ -20,15 +17,3 @@ class User(SQLModel, table=True):
     name: str
     email: str
     phone: str
-
-
-async_engine = create_async_engine("sqlite+aiosqlite:///test/database.db")
-
-
-async def createTable():
-    async with async_engine.begin() as conn:
-        await conn.run_sync(SQLModel.metadata.create_all)
-
-
-if __name__ == "__main__":
-    asyncio.run(createTable())

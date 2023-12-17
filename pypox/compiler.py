@@ -1,11 +1,9 @@
-import asyncio
 from contextlib import asynccontextmanager
-from importlib.machinery import ModuleSpec
 from types import ModuleType
 import importlib.util
 import os
 from fastapi import APIRouter, FastAPI
-from typing import Any, AsyncGenerator, Callable, Optional, Self, Type
+from typing import Any, AsyncGenerator, Callable, Optional
 
 from typing import List
 
@@ -22,6 +20,7 @@ FILE_CONVENTIONS: List[str] = [
     "options.py",
     "head.py",
     "license.md",
+    "connection.py",
 ]
 
 FASTAPI_PARAMETERS: List[str] = [
@@ -167,9 +166,9 @@ class Pypox:
 
         @asynccontextmanager
         async def lifespan(app: FastAPI) -> AsyncGenerator[None, Any]:
-            [x.__call__ for x in modules if x.__name__ == "startup"][0](app)
+            await [x.__call__ for x in modules if x.__name__ == "startup"][0](app)
             yield
-            [x.__call__ for x in modules if x.__name__ == "shutdown"][0](app)
+            await [x.__call__ for x in modules if x.__name__ == "shutdown"][0](app)
 
         return lifespan
 

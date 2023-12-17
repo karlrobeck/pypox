@@ -7,7 +7,6 @@ name = "pypi"
 fastapi = "*"
 uvicorn = {extras = ["standard"], version = "*"}
 twine = "*"
-pypox = {path = "."}
 mkdocs = "*"
 mkdocs-material = "*"
 sqlmodel = "*"
@@ -16,6 +15,7 @@ faker = "*"
 httpx = "*"
 pytest = "*"
 pytest-asyncio = "*"
+pypox = "*"
 
 [dev-packages]
 
