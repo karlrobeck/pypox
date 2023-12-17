@@ -248,7 +248,7 @@ class Pypox:
             if root == self.directory:
                 lifespan: Callable[[], None] | None = self.__create_lifespan(modules)
                 config: dict[str, Any] = self.__create_config(modules, "FastAPI")
-                self.main_api: FastAPI = FastAPI(**config, lifespan=lifespan)
+                self.main_api: FastAPI = FastAPI(**config, lifespan=lifespan)  # type: ignore
 
             if self.main_api and root == self.directory:
                 for endpoint, endpoint_config in zip(endpoints, configs):
