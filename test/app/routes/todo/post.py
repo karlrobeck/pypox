@@ -1,18 +1,28 @@
 from uuid import uuid1
-from test.app.database.models import Todo, User
-from test.app.database.session import dbSession, AsyncSession
+from test.app.database.SQLITE import TodoDatabase
 from test.app.routes.todo.schemas import UserTodo
 from sqlmodel import select
 from fastapi import Depends, HTTPException, status
+from pypox.database import asyncDbSession, AsyncSession
 
 
-async def endpoint(user_id: str, body: UserTodo, db: AsyncSession = Depends(dbSession)):
+async def endpoint(user_id: str, body: UserTodo):
     """
     create a todo
     """
+    async with await asyncDbSession(TodoDatabase) as session:
+        if (
+            await session.execute(
+                select(TodoDatabase.User).where(TodoDatabase.User.id == user_id)
+            )
+        ).first() is None:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="user not found"
+            )
 
-    db.add(Todo(id=str(uuid1()), **body.model_dump(), user_id=user_id))
+        session.add(
+            TodoDatabase.Todo(id=str(uuid1()), **body.model_dump(), user_id=user_id)
+        )
 
-    await db.commit()
-
-    return "Successfully created"
+        await session.commit()
+        return "Successfully created"

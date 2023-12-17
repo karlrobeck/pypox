@@ -12,7 +12,20 @@ test_user: dict[str, dict] = {}
 SIZE = 10
 
 
-# test register rout
+def test_database():
+    """
+    check if database.db exist
+    """
+    if os.path.exists(f"{os.getcwd()}/test/database.db"):
+        os.remove(f"{os.getcwd()}/test/database.db")
+        print("old database removed")
+    assert not os.path.exists(f"{os.getcwd()}/test/database.db")
+    os.system("python test/app/database/models.py")
+    print("database created")
+    assert os.path.exists(f"{os.getcwd()}/test/database.db")
+
+
+# test register route
 @pytest.mark.asyncio
 async def test_register():
     async with AsyncClient(
@@ -105,3 +118,13 @@ async def test_deleteTodo():
                     f"/todo/{todo.get('id')}/?user_id={test_user[key]['id']}",
                 )
                 assert response.status_code == 200
+
+
+def test_clean():
+    """
+    clean database
+    """
+    if os.path.exists(f"{os.getcwd()}/test/database.db"):
+        os.remove(f"{os.getcwd()}/test/database.db")
+        print("old database removed")
+    assert not os.path.exists(f"{os.getcwd()}/test/database.db")

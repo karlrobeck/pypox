@@ -1,22 +1,30 @@
 from uuid import uuid1
 from fastapi import Depends, HTTPException, status
-from test.app.database.models import User
-from test.app.database.session import dbSession, AsyncSession
+from test.app.database.SQLITE import TodoDatabase
+from pypox.database import asyncDbSession, AsyncSession
 from test.app.routes.auth.register.schemas import UserRegister
 from sqlmodel import select
 
 
-async def endpoint(body: UserRegister, db: AsyncSession = Depends(dbSession)):
+async def endpoint(
+    body: UserRegister,
+):
     # check if user exist
+    async with await asyncDbSession(TodoDatabase) as session:
+        if (
+            await session.execute(
+                select(TodoDatabase.User).where(
+                    TodoDatabase.User.username == body.username
+                )
+            )
+        ).first():
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT, detail="user already exist"
+            )
 
-    if (await db.execute(select(User).where(User.username == body.username))).first():
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT, detail="user already exist"
-        )
+        session.add(TodoDatabase.User(id=str(uuid1()), **body.model_dump()))
+        await session.commit()
+        # check user if exist in the database
 
-    db.add(User(id=str(uuid1()), **body.model_dump()))
-
-    # check user if exist in the database
-
-    # create user in the database
-    return "Successfully registered"
+        # create user in the database
+        return "Successfully registered"
