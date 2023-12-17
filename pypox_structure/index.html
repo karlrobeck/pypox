@@ -1,0 +1,603 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://example.com/pypox_structure/">
+      
+      
+        <link rel="prev" href="../examples/">
+      
+      
+        <link rel="next" href="../about/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>Pypox Strucuture - Pypox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pypox-class-structure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Pypox" class="md-header__button md-logo" aria-label="Pypox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pypox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pypox Strucuture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Pypox" class="md-nav__button md-logo" aria-label="Pypox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Pypox
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Pypox Strucuture
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Pypox Strucuture
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#__init__self-directory-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__(self, directory: str)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_modulesself-pypox" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_modules(self) -&gt; "Pypox"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__create_lifespanself-modules-listmoduletype-callable-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      __create_lifespan(self, modules: List[ModuleType]) -&gt; Callable | None
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__create_configself-modules-listmoduletype-type-str-dictstr-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      __create_config(self, modules: List[ModuleType], type: str) -&gt; dict[str, Any]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__get_endpointsself-modules-listmoduletype-tuplelistcallable-listdictstr-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      __get_endpoints(self, modules: list[ModuleType]) -&gt; tuple[list[Callable], list[dict[str, Any]]]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__call__self-args-any-kwds-any-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      __call__(self, *args: Any, **kwds: Any) -&gt; FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      Note
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#__init__self-directory-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      __init__(self, directory: str)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get_modulesself-pypox" class="md-nav__link">
+    <span class="md-ellipsis">
+      get_modules(self) -&gt; "Pypox"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__create_lifespanself-modules-listmoduletype-callable-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      __create_lifespan(self, modules: List[ModuleType]) -&gt; Callable | None
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__create_configself-modules-listmoduletype-type-str-dictstr-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      __create_config(self, modules: List[ModuleType], type: str) -&gt; dict[str, Any]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__get_endpointsself-modules-listmoduletype-tuplelistcallable-listdictstr-any" class="md-nav__link">
+    <span class="md-ellipsis">
+      __get_endpoints(self, modules: list[ModuleType]) -&gt; tuple[list[Callable], list[dict[str, Any]]]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#__call__self-args-any-kwds-any-fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      __call__(self, *args: Any, **kwds: Any) -&gt; FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#note" class="md-nav__link">
+    <span class="md-ellipsis">
+      Note
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="pypox-class-structure"><code>Pypox</code> Class Structure</h1>
+<h4 id="__init__self-directory-str"><code>__init__(self, directory: str)</code></h4>
+<ul>
+<li><strong>Purpose:</strong> Initializes an instance of the <code>Pypox</code> class with the specified directory path.</li>
+<li><strong>Parameters:</strong></li>
+<li><code>directory</code> (str): The path to the directory containing Python modules following specific naming conventions.</li>
+<li><strong>Returns:</strong> None</li>
+</ul>
+<h4 id="get_modulesself-pypox"><code>get_modules(self) -&gt; "Pypox"</code></h4>
+<ul>
+<li><strong>Purpose:</strong> Retrieves the list of modules within the specified directory following predefined file naming conventions.</li>
+<li><strong>Returns:</strong> Instance of <code>Pypox</code></li>
+<li><strong>Note:</strong> Iterates through the directory's content, identifying and loading modules that adhere to predefined file naming conventions (<code>FILE_CONVENTIONS</code>). It utilizes <code>importlib</code> to dynamically load these modules.</li>
+</ul>
+<h4 id="__create_lifespanself-modules-listmoduletype-callable-none"><code>__create_lifespan(self, modules: List[ModuleType]) -&gt; Callable | None</code></h4>
+<ul>
+<li><strong>Purpose:</strong> Creates a context manager function to manage the application's lifespan based on presence of "startup" and "shutdown" functions in discovered modules.</li>
+<li><strong>Parameters:</strong></li>
+<li><code>modules</code> (List[ModuleType]): List of modules to check for "startup" and "shutdown" functions.</li>
+<li><strong>Returns:</strong> A lifespan context manager function if both "startup" and "shutdown" functions are present in the modules, otherwise <code>None</code>.</li>
+</ul>
+<h4 id="__create_configself-modules-listmoduletype-type-str-dictstr-any"><code>__create_config(self, modules: List[ModuleType], type: str) -&gt; dict[str, Any]</code></h4>
+<ul>
+<li><strong>Purpose:</strong> Generates configuration dictionaries for FastAPI and API routers based on module contents.</li>
+<li><strong>Parameters:</strong></li>
+<li><code>modules</code> (List[ModuleType]): List of modules to generate the configuration from.</li>
+<li><code>type</code> (str): Type of configuration to generate, either "FastAPI" or "APIRouter".</li>
+<li><strong>Returns:</strong> Configuration dictionary containing parameters defined in <code>FASTAPI_PARAMETERS</code> or <code>API_ROUTER_PARAMETERS</code>.</li>
+</ul>
+<h4 id="__get_endpointsself-modules-listmoduletype-tuplelistcallable-listdictstr-any"><code>__get_endpoints(self, modules: list[ModuleType]) -&gt; tuple[list[Callable], list[dict[str, Any]]]</code></h4>
+<ul>
+<li><strong>Purpose:</strong> Extracts endpoints and their configurations from a list of modules.</li>
+<li><strong>Parameters:</strong></li>
+<li><code>modules</code> (list[ModuleType]): List of modules containing endpoint information.</li>
+<li><strong>Returns:</strong></li>
+<li>Tuple containing:<ul>
+<li><code>endpoints</code>: A list of endpoint functions.</li>
+<li><code>configs</code>: A list of endpoint configurations.</li>
+</ul>
+</li>
+</ul>
+<h4 id="__call__self-args-any-kwds-any-fastapi"><code>__call__(self, *args: Any, **kwds: Any) -&gt; FastAPI</code></h4>
+<ul>
+<li><strong>Purpose:</strong> Executes the instance as a function to generate and configure the FastAPI application and API routers.</li>
+<li><strong>Parameters:</strong></li>
+<li><code>*args</code> (Any): Variable length arguments.</li>
+<li><code>**kwds</code> (Any): Keyword arguments.</li>
+<li><strong>Returns:</strong> The constructed FastAPI application based on discovered modules and configurations.</li>
+</ul>
+<h4 id="note"><code>Note</code></h4>
+<ul>
+<li>The <code>Pypox</code> class orchestrates the dynamic integration of modules into the FastAPI application and API routers based on naming conventions. It automates the creation of routes, configuration parameters, and execution of startup/shutdown routines, allowing for a streamlined API setup process.</li>
+<li>Utilizing this class involves instantiating <code>Pypox</code>, calling it as a function, and obtaining a configured <code>FastAPI</code> instance ready for use.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
